@@ -1,42 +1,60 @@
 import java.util.*;
 
-
 public class Agencia {
-    
-    private int numero;
-    private Banco banco;
-    private List<ContaIF> contas = new ArrayList<ContaIF>();
 
-    public void cadastrarConta(ContaIF conta) {
-        contas.add(conta);
-    }
-    
-    public ContaIF pesquisarContaPorNumero(int numero) {
-        
-        for (ContaIF conta : contas) {
-            
-            if (conta.getNumero() == numero) {
-                return conta;
-            }
-        }
-        
-        throw new RuntimeException("Conta não encontrada: " + numero);
-    }
+	private int numero;
+	private Banco banco;
+	private List<Cliente> contas = new ArrayList<Cliente>();
+	private List<Cliente> clientes = new ArrayList<Cliente>();
 
-    public void setNumero(int numero) {
-        this.numero = numero;
-    }
+	public void cadastrarConta(Cliente conta) {
+		contas.add(conta);
+	}
 
-    public int getNumero() {
-        return numero;
-    }
+	public Cliente pesquisarContaPorNumero(int numero) {
 
-    public void setBanco(Banco banco) {
-        this.banco = banco;
-    }
+		for (Cliente conta : contas) {
 
-    public Banco getBanco() {
-        return banco;
-    }
+			if (conta.getNumero() == numero) {
+				return conta;
+			}
+		}
+
+		throw new RuntimeException("Conta não encontrada: " + numero);
+	}
+	
+	
+	public void cadastrarCliente(Cliente cliente) {
+		clientes.add(cliente);
+	}
+	
+	public Cliente pesquisarPesquisarClientePorCpf(String cpf) {
+
+		for (Cliente cliente : clientes) {
+
+			if (cliente.getCpf().equals(cpf)) {
+				return cliente;
+			}
+		}
+
+		throw new RuntimeException("Conta não encontrada: " + numero);
+	}
+	
+	
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setBanco(Banco banco) {
+		this.banco = banco;
+	}
+
+	public Banco getBanco() {
+		return banco;
+	}
 
 }
